@@ -39,3 +39,30 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# OS cruft
+Thumbs.db
+desktop.ini
+
+# Editors/IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Logs (general)
+logs
+*.log
+
+# Optional: local dev databases (if you add SQLite later)
+*.db
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Cache files
+.eslintcache
+
+# Allow committing an example env (while ignoring real ones)
+!env.example
+!**/.env.example
