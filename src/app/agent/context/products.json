@@ -1,0 +1,23 @@
+[
+  {
+    "id": "p-100",
+    "name": "Aurora Headphones",
+    "blurb": "Wireless over-ear with spatial audio and 30-hour battery.",
+    "selling_points": ["Spatial audio", "Comfort fit", "USB-C fast charge"],
+    "faq": [
+      {
+        "q": "Does it support Bluetooth multipoint?",
+        "a": "Yes, up to two devices."
+      }
+    ],
+    "upsell": ["p-101"]
+  },
+  {
+    "id": "p-101",
+    "name": "Nimbus Keyboard",
+    "blurb": "Low-profile mechanical keyboard with hot-swappable switches.",
+    "selling_points": ["Hot-swap", "RGB", "Aluminum frame"],
+    "faq": [{ "q": "Is it wireless?", "a": "Yes, 2.4GHz and Bluetooth." }],
+    "upsell": ["p-100"]
+  }
+]

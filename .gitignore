@@ -66,3 +66,15 @@ logs
 # Allow committing an example env (while ignoring real ones)
 !env.example
 !**/.env.example
+
+# Python virtual envs
+.agentvenv/
+.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
