@@ -66,7 +66,9 @@ export const Store = {
     return PRODUCTS.find((p) => p.id === productId) || null;
   },
   createCart() {
-    const cart: Cart = { id: id(), items: [] };
+    const cart: Cart = { id: id(), items: [] }; // ← plain object
+    carts.set(cart.id, cart);
+    return cart;
   },
   getCart(cartId: string) {
     return carts.get(cartId) || null;
