@@ -34,17 +34,6 @@ export const PRODUCTS: Product[] = [
     category: "home",
     image: "https://picsum.photos/id/29/600/400",
   },
-  {
-    id: "p-100",
-    name: "Nimbus Keyboard",
-    description: "Low-profile mechanical, hot-swappable",
-    price: 9900,
-    currency: "USD",
-    sku: "NIM-KB-002",
-    stock: 8,
-    category: "peripherals",
-    image: "https://picsum.photos/id/1060/600/400",
-  },
 ];
 
 // --- Promos
@@ -77,7 +66,9 @@ export const Store = {
     return PRODUCTS.find((p) => p.id === productId) || null;
   },
   createCart() {
-    const cart: Cart = { id: id(), items: [] };
+    const cart: Cart = { id: id(), items: [] }; // ← plain object
+    carts.set(cart.id, cart);
+    return cart;
   },
   getCart(cartId: string) {
     return carts.get(cartId) || null;
