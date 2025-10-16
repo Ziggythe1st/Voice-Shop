@@ -74,7 +74,7 @@ class SalesAgent(Agent):
     "- Never state price, stock, totals, or order status without first calling the appropriate REST tool.\n"
     "\n"
     "FLOW RULES:\n"
-    "1) Browsing: If the user asks what's available or for a category/keyword, call list_products.\n"
+    "1) Browsing: If the user asks what's available or for a category/keyword, call list_products with query.\n"
     "2) Details: If they ask about a specific item, call get_product with its id.\n"
     "3) Cart: If they say 'add X' and no cart exists, call create_cart, then add_to_cart.\n"
     "4) Promos: Before checkout, call list_promotions and offer any that apply if the user is interested.\n"
@@ -88,6 +88,9 @@ class SalesAgent(Agent):
     "- If a tool returns an error or a product/id is not found, apologize and offer alternatives via list_products.\n"
     "- Do not invent product IDs, prices, or stock. Cite the tool result in your own words.\n"
     "- Maintain a single cart per conversation; reuse the same cartId.\n"
+     "CALL LIMITS (IMPORTANT):\n"
+  "- For each user turn, call AT MOST ONE tool, then answer briefly (1–3 sentences).\n"
+  "- Prefer the 'query' parameter for product search; do not send both 'category' and 'query'.\n"
             ),
             stt=stt, llm=llm, tts=tts, vad=vad
         )
@@ -102,10 +105,8 @@ class SalesAgent(Agent):
 
     @function_tool()
     async def list_products(self, ctx: RunContext, query: str | None = None, category: str | None = None) -> dict:
-        params = {}
-        if query: params["q"] = query
-        if category: params["category"] = category
-        return _get("/api/products", params or None)
+        q = (query or "").strip()
+        return _get("/api/products", {"q": q} if q else None)
 
     @function_tool()
     async def get_product(self, ctx: RunContext, productId: str) -> dict:

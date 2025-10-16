@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import VoiceChatWidget from "@/components/VoiceChatWidget";
 import type { Product, Cart } from "./lib/types";
 
 export default function Home() {
@@ -153,6 +154,7 @@ export default function Home() {
           )}
         </aside>
       </div>
+      <VoiceChatWidget />
     </main>
   );
 }
